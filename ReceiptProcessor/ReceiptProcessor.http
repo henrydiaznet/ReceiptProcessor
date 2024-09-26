@@ -1,0 +1,52 @@
+@ReceiptProcessor_HostAddress = http://localhost:5222
+
+GET {{ReceiptProcessor_HostAddress}}/receipts/
+Accept: application/json
+
+###
+
+POST {{ReceiptProcessor_HostAddress}}/receipts/process
+accept: */*
+Content-Type: application/json
+
+{
+  "retailer": "Target",
+  "purchaseDate": "2022-01-01",
+  "purchaseTime": "13:01",
+  "items": [
+    {
+      "shortDescription": "Mountain Dew 12PK",
+      "price": "6.49"
+    },
+    {
+      "shortDescription": "Emils Cheese Pizza",
+      "price": "12.25"
+    },
+    {
+      "shortDescription": "Knorr Creamy Chicken",
+      "price": "1.26"
+    },
+    {
+      "shortDescription": "Doritos Nacho Cheese",
+      "price": "3.35"
+    },
+    {
+      "shortDescription": "   Klarbrunn 12-PK 12 FL OZ  ",
+      "price": "12.00"
+    }
+  ],
+  "total": "35.35"
+}
+
+###
+
+@id = 321022d4-d16a-45c4-b917-3ca7b4c58387
+
+GET {{ReceiptProcessor_HostAddress}}/receipts/{{id}}/points
+accept: */*
+
+###
+
+
+
+
